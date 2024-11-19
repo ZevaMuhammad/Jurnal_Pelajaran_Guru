@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_jurnal_mengajar_dashboard,jurnal.mengajar.dashboard,model_jurnal_mengajar_dashboard,base.group_user,1,1,1,1
+access_jadwal_mengajar_user,jadwal.mengajar.user,model_jurnal_mengajar_jadwal,group_jurnal_mengajar_user,1,1,1,1
+access_daftar_hadir_user,daftar.hadir.user,model_jurnal_mengajar_hadir,group_jurnal_mengajar_user,1,1,1,1
+access_isi_pengajaran_user,isi.pengajaran.user,model_jurnal_mengajar_isi,group_jurnal_mengajar_user,1,1,1,1
+access_evaluasi_pengajaran_user,evaluasi.pengajaran.user,model_jurnal_mengajar_evaluasi,group_jurnal_mengajar_user,1,1,1,1
+access_guru_pengajar_user,guru.pengajar.user,model_jurnal_mengajar_guru,group_jurnal_mengajar_user,1,1,1,1
+access_mata_pelajaran_user,mata.pelajaran.user,model_jurnal_mengajar_mata_pelajaran,group_jurnal_mengajar_user,1,1,1,1
+access_jadwal_mengajar_user_calendar,jadwal.mengajar.user.calendar,model_jurnal_mengajar_jadwal,group_jurnal_mengajar_user,1,1,1,1

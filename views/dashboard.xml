@@ -1,0 +1,59 @@
+<odoo>
+    <record id="view_dashboard_form" model="ir.ui.view">
+        <field name="name">dashboard.jurnal.mengajar.form</field>
+        <field name="model">jurnal.mengajar.dashboard</field>
+        <field name="arch" type="xml">
+            <form string="Dashboard Jurnal Mengajar">
+                <sheet>
+                    <!-- Title -->
+                    <group>
+                        <div class="oe_title">
+                            <h1>Dashboard Jurnal Mengajar</h1>
+                        </div>
+                    </group>
+                    
+                    <!-- Items with Boxes -->
+                    <div class="o_dashboard_boxes">
+                        <div class="o_dashboard_box">
+                            <label for="guru_count"/>
+                            <div class="o_dashboard_value">
+                                <field name="guru_count" readonly="1"/>
+                            </div>
+                        </div>
+                        <div class="o_dashboard_box">
+                            <label for="mata_pelajaran_count"/>
+                            <div class="o_dashboard_value">
+                                <field name="mata_pelajaran_count" readonly="1"/>
+                            </div>
+                        </div>
+                        <div class="o_dashboard_box">
+                            <label for="jadwal_mengajar_count"/>
+                            <div class="o_dashboard_value">
+                                <field name="jadwal_mengajar_count" readonly="1"/>
+                            </div>
+                        </div>
+                        <div class="o_dashboard_box">
+                            <label for="daftar_hadir_count"/>
+                            <div class="o_dashboard_value">
+                                <field name="daftar_hadir_count" readonly="1"/>
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_jurnal_mengajar_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">jurnal.mengajar.dashboard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_dashboard_form"/>
+    </record>
+
+    <menuitem id="menu_jurnal_mengajar_dashboard"
+              name="Dashboard"
+              parent="menu_jurnal_mengajar_root"
+              action="action_jurnal_mengajar_dashboard"
+              sequence="1"/>
+</odoo>

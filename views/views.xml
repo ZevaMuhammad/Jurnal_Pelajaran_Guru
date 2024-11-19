@@ -1,0 +1,308 @@
+<odoo>
+    <!-- Menu Root -->
+    <menuitem id="menu_jurnal_mengajar_root" name="Jurnal Mengajar" sequence="1"/>
+
+    <!-- Kelompok 1 -->
+    <menuitem id="menu_kelompok_1" name="Jurnal" parent="menu_jurnal_mengajar_root" sequence="1"/>
+    
+    <menuitem id="menu_jurnal_mengajar_jurnal"
+              name="Jurnal"
+              parent="menu_kelompok_1"
+              action="action_jurnal"
+              sequence="1"/>
+    
+    <menuitem id="menu_jurnal_mengajar_calendar"
+              name="Kalender Jadwal"
+              parent="menu_kelompok_1"
+              action="action_jadwal_mengajar_calendar"
+              sequence="2"/>
+    
+    <menuitem id="menu_jurnal_mengajar_jadwal"
+              name="Jadwal Mengajar"
+              parent="menu_kelompok_1"
+              action="action_jadwal_mengajar"
+              sequence="3"/>
+    
+    <menuitem id="menu_jurnal_mengajar_hadir"
+              name="Daftar Hadir"
+              parent="menu_kelompok_1"
+              action="action_daftar_hadir"
+              sequence="4"/>
+
+    <!-- Kelompok 2 -->
+    <menuitem id="menu_kelompok_2" name="Data" parent="menu_jurnal_mengajar_root" sequence="2"/>
+    
+    <menuitem id="menu_jurnal_mengajar_guru"
+              name="Guru Pengajar"
+              parent="menu_kelompok_2"
+              action="action_guru_pengajar"
+              sequence="1"/>
+    
+    <menuitem id="menu_jurnal_mengajar_mata_pelajaran"
+              name="Mata Pelajaran"
+              parent="menu_kelompok_2"
+              action="action_mata_pelajaran"
+              sequence="2"/>
+    
+    <menuitem id="menu_jurnal_mengajar_evaluasi"
+              name="Evaluasi Pengajaran"
+              parent="menu_kelompok_2"
+              action="action_evaluasi_pengajaran"
+              sequence="3"/>
+
+    <!-- Guru -->
+    <record id="view_guru_pengajar_list" model="ir.ui.view">
+        <field name="name">guru.pengajar.list</field>
+        <field name="model">jurnal.mengajar.guru</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="no_telepon"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="view_guru_pengajar_form" model="ir.ui.view">
+        <field name="name">guru.pengajar.form</field>
+        <field name="model">jurnal.mengajar.guru</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="email"/>
+                        <field name="no_telepon"/>
+                    </group>
+                    <group string="Mata Pelajaran">
+                        <field name="mata_pelajaran_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_guru_pengajar" model="ir.actions.act_window">
+        <field name="name">Guru</field>
+        <field name="res_model">jurnal.mengajar.guru</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <!-- Guru -->
+
+    <!-- Mata Pelajaran -->
+    <record id="view_mata_pelajaran_list" model="ir.ui.view">
+        <field name="name">mata.pelajaran.list</field>
+        <field name="model">jurnal.mengajar.mata_pelajaran</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="guru_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_mata_pelajaran_form" model="ir.ui.view">
+        <field name="name">mata.pelajaran.form</field>
+        <field name="model">jurnal.mengajar.mata_pelajaran</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="guru_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_mata_pelajaran" model="ir.actions.act_window">
+        <field name="name">Mata Pelajaran</field>
+        <field name="res_model">jurnal.mengajar.mata_pelajaran</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <!-- Mata Pelajaran -->
+
+    <!-- Jadwal Mengajar -->
+    <record id="view_jadwal_mengajar_list" model="ir.ui.view">
+        <field name="name">jadwal.mengajar.list</field>
+        <field name="model">jurnal.mengajar.jadwal</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="guru_id"/>
+                <field name="tanggal_mulai"/>
+                <field name="tanggal_selesai"/>
+                <field name="mata_pelajaran_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_jadwal_mengajar_form" model="ir.ui.view">
+        <field name="name">jadwal.mengajar.form</field>
+        <field name="model">jurnal.mengajar.jadwal</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="guru_id"/>
+                        <field name="tanggal_mulai"/>
+                        <field name="tanggal_selesai"/>
+                        <field name="mata_pelajaran_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_jadwal_mengajar" model="ir.actions.act_window">
+        <field name="name">Jadwal Mengajar</field>
+        <field name="res_model">jurnal.mengajar.jadwal</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <!-- Jadwal Mengajar -->
+
+    <!-- Daftar Hadir -->
+    <record id="view_daftar_hadir_list" model="ir.ui.view">
+        <field name="name">daftar.hadir.list</field>
+        <field name="model">jurnal.mengajar.hadir</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="jadwal_id"/>
+                <field name="siswa_id"/>
+                <field name="status_kehadiran"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_daftar_hadir_form" model="ir.ui.view">
+        <field name="name">daftar.hadir.form</field>
+        <field name="model">jurnal.mengajar.hadir</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="jadwal_id"/>
+                        <field name="siswa_id"/>
+                        <field name="status_kehadiran"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_daftar_hadir" model="ir.actions.act_window">
+        <field name="name">Daftar Hadir</field>
+        <field name="res_model">jurnal.mengajar.hadir</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <!-- Daftar Hadir -->
+
+    <!-- Jurnal -->
+    <record id="view_jurnal_list" model="ir.ui.view">
+        <field name="name">jurnal.list</field>
+        <field name="model">jurnal.mengajar.isi</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="tipe"/>
+                <field name="jadwal_id"/>
+                <field name="guru_id"/>
+                <field name="tanggal_dibuat"/>
+                <field name="batas_waktu"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_jurnal_form" model="ir.ui.view">
+        <field name="name">jurnal.form</field>
+        <field name="model">jurnal.mengajar.isi</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="tipe"/>
+                        <field name="jadwal_id"/>
+                        <field name="guru_id"/>
+                    </group>
+                    <group>
+                        <field name="deskripsi"/>
+                        <field name="file_materi" widget="binary"/>
+                        <field name="file_materi_name"/>
+                    </group>
+                    <group>
+                        <field name="tanggal_dibuat" readonly="1"/>
+                        <field name="batas_waktu"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_jurnal" model="ir.actions.act_window">
+        <field name="name">Jurnal</field>
+        <field name="res_model">jurnal.mengajar.isi</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <!-- Jurnal -->
+
+    <!-- Evaluasi Pengajaran -->
+    <record id="view_evaluasi_pengajaran_list" model="ir.ui.view">
+        <field name="name">evaluasi.pengajaran.list</field>
+        <field name="model">jurnal.mengajar.evaluasi</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="jadwal_id"/>
+                <field name="skor"/>
+                <field name="komentar"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_evaluasi_pengajaran_form" model="ir.ui.view">
+        <field name="name">evaluasi.pengajaran.form</field>
+        <field name="model">jurnal.mengajar.evaluasi</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="jadwal_id"/>
+                        <field name="skor"/>
+                        <field name="komentar"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_evaluasi_pengajaran" model="ir.actions.act_window">
+        <field name="name">Evaluasi Pengajaran</field>
+        <field name="res_model">jurnal.mengajar.evaluasi</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <!-- Evaluasi Pengajaran -->
+
+    <!-- Calendar View -->
+    <record id="view_jadwal_mengajar_calendar" model="ir.ui.view">
+        <field name="name">jadwal.mengajar.calendar</field>
+        <field name="model">jurnal.mengajar.jadwal</field>
+        <field name="arch" type="xml">
+            <calendar string="Kalender Jadwal Mengajar" date_start="tanggal_mulai" date_stop="tanggal_selesai" color="guru_id">
+                <field name="name"/>
+                <field name="guru_id"/>
+                <field name="mata_pelajaran_id"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="action_jadwal_mengajar_calendar" model="ir.actions.act_window">
+        <field name="name">Kalender Jadwal Mengajar</field>
+        <field name="res_model">jurnal.mengajar.jadwal</field>
+        <field name="view_mode">calendar,list,form</field>
+        <field name="context">{}</field>
+    </record>
+    <!-- Calendar View -->
+</odoo>
